@@ -12,6 +12,7 @@ In Java kann "Int" Zahlen bis zu 32-Bit beinhalten, wobei "Long" Zahlen bis 64-B
 ### b)
 $f(n) =n$
 Das größte n ist hier $n=t$
+f(n) = lg n
 $$
 f(n)=\log_{2} n; \log_{2} n \leq t\implies n\leq 2^t
 $$
