@@ -30,7 +30,8 @@ $$
 $$
 Das größte n ist hier leider nur $n=\log_{2}t$
 
-### Aufgabe 3
+## Aufgabe 3
+### a)
 $$
 f(n) = n^2, f \in O(2^n) 
 $$
@@ -63,3 +64,12 @@ Skript zum überprüfen:
 for i in range(7, 100):
 	print(2**(7-1)+2*7+1 <= 2**7)
 ```
+### b)
+$f(x)=\ln x$
+$f\in O(\sqrt{ x })$
+$$
+\begin{align}
+\lim_{ n \to \infty }\frac{\ln x}{\sqrt{ x })} \\
+\lim_{ n \to \infty } \frac{\frac{1}{x}}{\frac{1}{2\sqrt{ x }}} = 0
+\end{align}
+$$
