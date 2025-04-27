@@ -27,13 +27,43 @@ public class Main {
             System.out.println("  max n für n! ≤ t: " + nFac + " (Dauer: " + dauer + " µs)");
             System.out.println();
         }
+
+        // Aufgabe 4.b.
+
+        int[] werte = {
+                1,
+                2,
+                3,
+                5,
+                10
+        };
+
+        for (int w : werte) {
+
+            System.out.println(w);
+
+            // Multiple3
+            long start = System.nanoTime();
+            int m = multiple3(w);
+            long dauer = (System.nanoTime() - start) / 1000;
+
+            System.out.println("Time: "+ dauer + " Multiple3 Ergebnis: " + m);
+
+            // expByMult
+            start = System.nanoTime() / 1000;
+            int ex = expByMult(w);
+            dauer = (System.nanoTime() - start);
+
+            System.out.println("Time: "+ dauer + " ExpByMult Ergebnis: " + ex);
+
+        }
     }
 
     // Für die schnellere Variante geben wir als zweites Argument true
     private static long maxNLogN(double t, boolean useBinarySearch) {
         int n = 1;
 
-        if(useBinarySearch) {
+        if (useBinarySearch) {
             System.out.println("Using Binary Search");
             long low = 1;
             long high = Integer.MAX_VALUE;
@@ -41,16 +71,16 @@ public class Main {
 
 
             // Wir suchen vorerst eine Obere Grenze
-            while(high * log2(high) <= t && high < Integer.MAX_VALUE / 2) {
+            while (high * log2(high) <= t && high < Integer.MAX_VALUE / 2) {
                 high *= 2;
             }
 
             // Das hier ist der eigentliche "Binary Search"
-            while(low <= high) {
+            while (low <= high) {
                 long mid = low + (high - low) / 2;
                 double c = mid * log2(mid);
 
-                if(c <= t) {
+                if (c <= t) {
                     res = mid;
                     low = mid + 1;
                 } else {
@@ -74,7 +104,7 @@ public class Main {
     // Wenn wir useBigInt auf false setzen könnte es sein, dass die variable fac "overflowed", sprich der Wert ins negative geht, da er zu groß wird
     private static long maxNFac(double t, boolean useBigInt) {
         long n = 1;
-        if(useBigInt) {
+        if (useBigInt) {
             System.out.println("Using Big Int");
             BigInteger fac = BigInteger.ONE;
             while (true) {
@@ -93,11 +123,35 @@ public class Main {
             while (fac <= t) {
                 n++;
                 fac *= n;
-                if(fac < 0) break;
+                if (fac < 0) break;
             }
             return n - 1;
         }
 
+    }
+
+    public static int multiple3(int n) {
+        if (n == 0) {
+            return 0;
+        }
+        int result = 3;
+        while (n > 1) {
+            result = result + 3;
+            n = n - 1;
+        }
+        return result;
+    }
+
+    public static int expByMult(int n) {
+        if (n == 0) {
+            return 1;
+        }
+        int result = 3;
+        while (n > 1) {
+            result = multiple3(result);
+            n = n - 1;
+        }
+        return result;
     }
 
     // Hilfsmethode für log2
