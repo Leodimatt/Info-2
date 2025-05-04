@@ -73,3 +73,26 @@ $$
 \lim_{ n \to \infty } \frac{\frac{1}{x}}{\frac{1}{2\sqrt{ x }}} = 0
 \end{aligned}
 $$
+
+Aufg.4
+a) Multiple3
+public static int multiple3(int n) {
+if (n == 0) {
+return 0; // Wenn n=0, dann 3*0 = 0
+}
+int result = 3; // Startwert: "3" für n=1
+while (n > 1) {
+result += 3; // addiert 3 für jede weitere Einheit
+n--;         // verringert n um 1
+}
+return result;   // gibt das Endergebnis zurück
+}
+- Zeile 1-2  ("if n == 0 then return 0")  hat konstante Kosten: Θ(1).
+- Zeile 3  ("result ← 3")  ebenfalls konstante Kosten: Θ(1).
+- Die Schleife  (Zeilen 4-6)  wird ungefähr n Mal durchlaufen.
+
+  Pro Durchlauf:
+    - Addition von 3 auf result (Zeile 5): konstante Kosten Θ(1)
+    - Verkleinern von n um 1 (Zeile 6): konstante Kosten Θ(1)
+- Die Gesamtkosten der Schleife sind damit Θ(n).
+  Antwort: Multiple3 hat im schlechtesten Fall eine Komplexität von Θ(n).
