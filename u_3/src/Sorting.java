@@ -1,61 +1,69 @@
 public class Sorting {
     public static void main(String[] args) {
-        int[] toSort = new int[100];
+        Person[] toSort = {
+                new Person("Anna", 30, "anna@example.com"),
+                new Person("Ben", 25, "ben@example.com"),
+                new Person("David", 28, "david@example.com"),
+                new Person("Klara", 35, "klara@example.com"),
+                new Person("Ela", 22, "ela@example.com")
+        };
 
-        for(int i = 0; i < 100; i++) {
-            toSort[i] = i+1;
-        }
-
-        for(int i = 99; i > 0; i--) {
-            int j = (int)(Math.random() * (i + 1));
-
-            int temp = toSort[i];
+        // Shuffle
+        for (int i = toSort.length - 1; i > 0; i--) {
+            int j = (int) (Math.random() * (i + 1));
+            Person temp = toSort[i];
             toSort[i] = toSort[j];
             toSort[j] = temp;
         }
 
-
-        System.out.println("Unsorted: ");
-        for (int n: toSort) {
-            System.out.print(n + " ");
+        System.out.println("Unsorted:");
+        for (Person p : toSort) {
+            System.out.println(p);
         }
-        System.out.println();
 
-        bubbleSort(toSort);
+        // bubbleSort(toSort);
+        selectionSort(toSort);
 
-        System.out.println("Sorted: ");
-        for(int n: toSort) {
-            System.out.print(n + " ");
+        System.out.println("\nSorted:");
+        for (Person p : toSort) {
+            System.out.println(p);
         }
     }
 
-    private static void swap(int[] arr, int pos1, int pos2) {
-        int temp = arr[pos1];
+    private static <T extends Comparable<T>> void swap(T[] arr, int pos1, int pos2) {
+        // Eine temporäre variable mit dem element aus der ersten position initialisieren
+        T temp = arr[pos1];
         arr[pos1] = arr[pos2];
         arr[pos2] = temp;
+
+        // Das ganze wäre auch mit einem one-liner möglich:
+
+        // arr[pos1] = arr[pos1] ^ arr[pos2] ^ (arr[pos2] = arr[pos1])
     }
 
-    public static void bubbleSort(int[] toSort) {
+    public static <T extends Comparable<T>> void bubbleSort(T[] toSort) {
+        // Bubblesort nach Pseudocode
+
         boolean swapped;
         int m = toSort.length - 1;
         do {
             swapped = false;
-            for(int i = 1; i <= m; i++) {
-                if (toSort[i - 1] > toSort[i]) {
+            for (int i = 1; i <= m; i++) {
+                if (toSort[i - 1].compareTo(toSort[i]) > 0) {
                     swap(toSort, i - 1, i);
                     swapped = true;
                 }
             }
-            m -= 1;
-        }
-        while (swapped);
+            m--;
+        } while (swapped);
     }
 
-    public static void selectionSort(int[] toSort) {
-        for (int i = 0; i <= toSort.length - 1; i++) {
+    public static <T extends Comparable<T>> void selectionSort(T[] toSort) {
+        // Selectionsort nach Pseudocode
+        for (int i = 0; i < toSort.length - 1; i++) {
             int min = i;
-            for (int j = i + 1; j <= toSort.length - 1; j++) {
-                if(toSort[j] < toSort[min]) {
+            for (int j = i + 1; j < toSort.length; j++) {
+                if (toSort[j].compareTo(toSort[min]) < 0) {
                     min = j;
                 }
             }

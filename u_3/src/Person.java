@@ -8,20 +8,24 @@ public class Person implements Comparable<Person> {
         this.email = email;
         this.age = age;
     }
-    public String getName(){
+
+    public String getName() {
         return name;
     }
-    public int getAge(){
+
+    public int getAge() {
         return age;
     }
-    public String getEmail(){
+
+    public String getEmail() {
         return email;
     }
 
     @Override
-    public int compareTo(Person otherPerson){
+    public int compareTo(Person otherPerson) {
         return this.email.compareTo(otherPerson.email);
     }
+
     @Override
     public String toString() {
         return "name: " + getName() + ", age: " + getAge() + ", email: " + getEmail();
