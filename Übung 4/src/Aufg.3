@@ -1,0 +1,41 @@
+Auf. 3
+a)	Wenn f ∈ O(g), dann O(f) ⊆ O(g)
+
+Wenn f ∈ O(g), dann ist auch jede Funktion, die in O(f) liegt, automatisch in O(g).
+-> Wenn f langsamer oder gleich schnell wächst wie g,
+dann wachsen alle Funktionen, die so schnell wie f wachsen, auch nicht schneller als g.
+
+b)	i) Teilmengenbeziehungen/Gleichheit
+
+1.	O(42) ⊆ O(n)
+Konstante Laufzeiten (O(42)) sind im Wachstum langsamer als linearen Laufzeiten (O(n)). (vgl. Folie 1.42,1.47)
+
+2.	 O(lg(n)) = O(ln(n)) = O(log10(n))
+Die Logarithmen unterscheiden sich nur durch konstante Faktoren, haben also das gleiche Wachstum. (vgl. Folie 1.42,1.47)
+
+3.	O(n) = O(2n)
+Der konstante Faktor (2) beeinflusst die Asymptotische Laufzeit nicht. Beide sind linear. (vgl. Folie 1.42)
+
+4.	 O(½n²) = O(n²)
+Auch hier beeinflusst der Konstante Faktor die Asymptotische Laufzeit nicht. (vgl. Folie 1.42)
+
+5.	 O(1000n⁵) = O(n⁵)
+Auch hier ist der konstante Faktor (1000) ändert nichts an der asymptotischen Laufzeit. (vgl. Folie 1.42)
+
+6.	 O(1024 log₂(n)) = O(lg(n))
+Konstante Faktor spielt keine Rolle (vgl. Folie 1.42)
+
+7.	O(lg(n)) ⊂ O(n) 
+Logarithmen wachsen langsamer als lineare Funktionen. – Lineare funktionen wachsen proportional, Logarithmen nicht.
+
+
+
+ii) Echte Teilmengen 
+
+O(42) ⊆ O(n)
+O(lg(n)) ⊆ O(n)
+O(n) ⊆ O(n²)
+O(n²) ⊆ O(n⁵)
+O(n⁵) ⊆ O(n⁶)
+O(n⁶) ⊆ O(2ⁿ)
+O(2ⁿ) ⊆ O(eⁿ)
