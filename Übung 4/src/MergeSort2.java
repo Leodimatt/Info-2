@@ -13,6 +13,7 @@ public class MergeSort2 {
         int i = 0, j = 0;
 
         for (int k = left; k <= right; k++) {
+            // Check if we are going out of bounds
             if (i < n1 && (j >= n2 || L[i].compareTo(R[j]) <= 0)) {
                 arr[k] = L[i++];
             } else if (j < n2) {
